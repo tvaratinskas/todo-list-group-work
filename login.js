@@ -19,6 +19,23 @@ loginForm.addEventListener("submit", (e) => {
       console.log("Received login response:", response);
 
       if (response.ok) {
+        // Check if login and password are valid
+        return fetch("https://testapi.io/api/tomas1089/resource/todoLogin", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ login: username, password: password }),
+        });
+      } else {
+        // Login failed
+        throw new Error("Login failed");
+      }
+    })
+    .then((response) => {
+      console.log("Received check login response:", response);
+
+      if (response.ok) {
         alert("Login successful");
         window.location.replace("index.html");
       } else {
