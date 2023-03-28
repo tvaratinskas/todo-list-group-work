@@ -2,6 +2,7 @@ window.addEventListener("load", () => {
   todos = JSON.parse(localStorage.getItem("todos")) || [];
   const nameInput = document.querySelector("#name");
   const newTodoForm = document.querySelector("#new-todo-form");
+  const submitTodoButton = document.querySelector("#submitTodo");
 
   const username = localStorage.getItem("username") || "";
 
@@ -29,6 +30,14 @@ window.addEventListener("load", () => {
     e.target.reset();
 
     DisplayTodos();
+  });
+
+  submitTodoButton.addEventListener("click", (e) => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (!isLoggedIn || isLoggedIn === "false") {
+      e.preventDefault();
+      window.location.href = "login.html";
+    }
   });
 
   DisplayTodos();
