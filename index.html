@@ -15,6 +15,18 @@
   </head>
 
   <body>
+    <div class="video-background">
+      <video autoplay muted loop id="Video">
+        <source src="background-movie.mp4" type="video/mp4" />
+      </video>
+      <video autoplay muted loop id="Video-2">
+        <source src="walking-video.mp4" type="video/mp4" />
+      </video>
+      <video autoplay muted loop id="Video-3">
+        <source src="riedlente.mp4" type="video/mp4" />
+      </video>
+    </div>
+
     <main class="app">
       <section class="greeting">
         <h2 class="title">
@@ -42,7 +54,7 @@
                 value="Weekend"
               />
               <span class="bubble weekday"></span>
-              <div>Weekday</div>
+              <p class="weekday">Weekday</p>
             </label>
             <label>
               <input
@@ -52,7 +64,7 @@
                 value="weekend"
               />
               <span class="bubble weekend"></span>
-              <div>Weekend</div>
+              <p class="weekday">Weekend</p>
             </label>
           </div>
 
