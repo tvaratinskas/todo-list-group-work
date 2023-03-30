@@ -26,58 +26,58 @@
         <source src="riedlente.mp4" type="video/mp4" />
       </video>
     </div>
+    <div class="all">
+      <main class="app">
+        <section class="greeting">
+          <h2 class="title">
+            Hello, <input type="text" id="name" placeholder="Name here" />
+          </h2>
+        </section>
 
-    <main class="app">
-      <section class="greeting">
-        <h2 class="title">
-          Hello, <input type="text" id="name" placeholder="Name here" />
-        </h2>
-      </section>
+        <section class="create-todo">
+          <h3 class="plans">Plans for a week:</h3>
+          <form id="new-todo-form">
+            <input
+              type="text"
+              placeholder="e.g. Gym?"
+              name="content"
+              id="content"
+            />
 
-      <section class="create-todo">
-        <h3 class="plans">Plans for a week:</h3>
-        <form id="new-todo-form">
-          <input
-            type="text"
-            placeholder="e.g. Gym?"
-            name="content"
-            id="content"
-          />
+            <h4>Pick a day</h4>
+            <div class="options">
+              <label>
+                <input
+                  type="radio"
+                  name="category"
+                  id="category1"
+                  value="Weekend"
+                />
+                <span class="bubble weekday"></span>
+                <p class="weekday">weekDay</p>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="category"
+                  id="category2"
+                  value="weekend"
+                />
+                <span class="bubble weekend"></span>
+                <p class="weekday">weekEnd</p>
+              </label>
+            </div>
 
-          <h4>Pick a day</h4>
-          <div class="options">
-            <label>
-              <input
-                type="radio"
-                name="category"
-                id="category1"
-                value="Weekend"
-              />
-              <span class="bubble weekday"></span>
-              <p class="weekday">Weekday</p>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="category"
-                id="category2"
-                value="weekend"
-              />
-              <span class="bubble weekend"></span>
-              <p class="weekday">Weekend</p>
-            </label>
-          </div>
+            <input type="submit" value="Add" />
+          </form>
+        </section>
 
-          <input type="submit" value="Add" />
-        </form>
-      </section>
-
-      <section class="todo-list">
-        <h3>LIST:</h3>
-        <div class="list" id="todo-list"></div>
-      </section>
-    </main>
-
+        <section class="todo-list">
+          <h3>LIST:</h3>
+          <div class="list" id="todo-list"></div>
+        </section>
+      </main>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
