@@ -284,6 +284,32 @@ input:checked ~ .bubble::after {
     color: grey;
 }
 
+#favoritesBtn {
+    color: yellow;
+}
+
+/* ................. */
+/* .todo-listBtns {
+    display: flex;
+    margin: auto;
+    gap: 20px;
+  }
+
+  .btn-todoList:hover {
+    background: var(--business);
+    transition: 0.3;
+  }
+
+
+.btn-todoList {
+  background: var(--primary);
+  padding: 4px;
+  border-radius: 12px;
+  background: white;
+  font-weight: 500;
+  cursor: pointer;
+} */
+
 @media only screen and (max-width: 720px) {
     .all {
         width: 100%;
