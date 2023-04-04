@@ -45,18 +45,20 @@ function DisplayTodos() {
     const label = document.createElement("label");
     const input = document.createElement("input");
     const span = document.createElement("span");
+
     const content = document.createElement("div");
     const actions = document.createElement("div");
     const edit = document.createElement("button");
     const deleteButton = document.createElement("button");
+    const star = document.createElement("i");
 
     input.type = "checkbox";
     input.checked = todo.done;
     span.classList.add("bubble");
-    if (todo.category == "personal") {
-      span.classList.add("personal");
+    if (todo.category == "bubble weekday") {
+      span.classList.add("weekday");
     } else {
-      span.classList.add("business");
+      span.classList.add("weekEnd");
     }
     content.classList.add("todo-content");
     actions.classList.add("actions");
@@ -69,6 +71,7 @@ function DisplayTodos() {
 
     label.appendChild(input);
     label.appendChild(span);
+    label.appendChild(star);
     actions.appendChild(edit);
     actions.appendChild(deleteButton);
     todoItem.appendChild(label);
@@ -93,6 +96,45 @@ function DisplayTodos() {
 
       DisplayTodos();
     });
+
+    //....................
+    todoItem.id = "favoriteOff";
+
+    let favoritesBtn = document.getElementById("favoritesBtn");
+    let todoListBtn = document.getElementById("todoListBtn");
+    star.classList.add("fa-solid");
+    star.classList.add("fa-heart");
+    star.style.color = "black";
+    star.style.marginLeft = "10px";
+    label.style.display = "flex";
+    star.style.fontSize = "50px";
+
+    star.addEventListener("click", (e) => {
+      e.preventDefault();
+      todoItem.id = todoItem.id === "favoriteOn" ? "favoriteOff" : "favoriteOn";
+      if (todoItem.id === "favoriteOn") {
+        star.style.color = "green";
+      } else if (todoItem.id === "favoriteOff") {
+        star.style.color = "black";
+      }
+    });
+
+    favoritesBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const favoriteOffs = document.querySelectorAll("#favoriteOff");
+      favoriteOffs.forEach(
+        (favoriteOff) => (favoriteOff.style.display = "none")
+      );
+    });
+
+    todoListBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const favoriteOffs = document.querySelectorAll("#favoriteOff");
+      favoriteOffs.forEach(
+        (favoriteOff) => (favoriteOff.style.display = "flex")
+      );
+    });
+    //....................
 
     edit.addEventListener("click", (e) => {
       const input = content.querySelector("input");
