@@ -152,15 +152,16 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
+    width: 200px;
     height: 20px;
     
-    border: 2px solid green;
+    /* border: 2px solid green; */
     }
 
 .bubble.weekend {
     border-color: black;
     box-shadow: black;
+    
 }
 
 .bubble::after {
@@ -310,10 +311,28 @@ input:checked ~ .bubble::after {
   cursor: pointer;
 } */
 
-@media only screen and (max-width: 720px) {
-    .all {
+@media only screen and (max-width: 460px) {
+    .todo-list .todo-item {
         width: 100%;
+        color: black;
+        padding: 0;
+        margin-bottom: 1rem;
+        
+        
     }
+
+    .todo-content {
+        width: 20%;
+        
+    }
+
+    button {
+        width: 10px;
+        height: 10px;
+    }
+}
+@media only screen and (max-width: 560px) {
+    
     
     
     .todo-list .todo-item {
@@ -321,10 +340,28 @@ input:checked ~ .bubble::after {
         color: black;
         padding: 0;
         margin-bottom: 1rem;
+        
     }
 
     .todo-content {
-        width: 40%;
+        width: 20%;
         
     }
-  }
+}
+@media only screen and (max-width: 777px) {
+    
+    
+    
+    .todo-list .todo-item {
+        width: 100%;
+        color: black;
+        padding: 0;
+        margin-bottom: 1rem;
+        
+    }
+
+    .todo-content {
+        width: 20%;
+        
+    }
+}
