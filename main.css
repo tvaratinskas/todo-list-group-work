@@ -148,19 +148,20 @@ input[type="checkbox"] {
     display: none;
 }
 
-/* .bubble {
+.bubble {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
+    width: 200px;
     height: 20px;
     
-    border: 2px solid green;
-    } */
+    /* border: 2px solid green; */
+    }
 
 .bubble.weekend {
     border-color: black;
     box-shadow: black;
+    
 }
 
 .bubble::after {
