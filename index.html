@@ -35,7 +35,14 @@
             Hello, <input type="text" id="name" placeholder="Name here" />
           </h2>
         </section>
-
+        <div class="todo-listBtns">
+          <button id="todoListBtn" class="todo-listBtn btn-todoList">
+            List
+          </button>
+          <button id="favoritesBtn" class="favoritesBtn btn-todoList">
+            Favorites
+          </button>
+        </div>
         <section class="create-todo">
           <h3 class="plans">Plans for a week:</h3>
           <form id="new-todo-form">
@@ -75,14 +82,6 @@
         </section>
 
         <section class="todo-list">
-          <div class="todo-listBtns">
-            <button id="todoListBtn" class="todo-listBtn btn-todoList">
-              Todo-List
-            </button>
-            <button id="favoritesBtn" class="favoritesBtn btn-todoList">
-              Favorites
-            </button>
-          </div>
           <div class="list" id="todo-list"></div>
         </section>
       </main>
