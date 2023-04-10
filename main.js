@@ -45,6 +45,7 @@ window.addEventListener("load", () => {
   });
 
   logoutButton.innerText = "Logout"; // set the text of logout button
+  logoutButton.style.color = "pink";
   logoutButton.addEventListener("click", (e) => {
     e.preventDefault();
     sessionStorage.setItem("isLoggedIn", "false");
