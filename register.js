@@ -5,22 +5,16 @@ registerForm.addEventListener("submit", (e) => {
 
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirm-password").value;
-  const email = document.getElementById("email").value;
-
-  if (password !== confirmPassword) {
-    alert("Passwords do not match");
-    return;
-  }
 
   console.log("Sending registration request...");
 
-  fetch("https://testapi.io/api/tomas1089/resource/todoRegister", {
+  fetch("https://testapi.io/api/tomas1089/resource/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer your-auth-token-here", // if required
     },
-    body: JSON.stringify({ login: username, password: password, email: email }),
+    body: JSON.stringify({ login: username, password: password }),
   })
     .then((response) => {
       console.log("Received registration response:", response);
@@ -29,7 +23,16 @@ registerForm.addEventListener("submit", (e) => {
         alert("Registration successful");
         window.location.replace("login.html");
       } else {
-        alert("Registration failed");
+        response
+          .json()
+          .then((data) => {
+            console.log(data);
+            alert("Registration failed: " + data.error); // display error message
+          })
+          .catch((error) => {
+            console.error;
+            alert("Registration failed");
+          });
       }
     })
     .catch((error) => {

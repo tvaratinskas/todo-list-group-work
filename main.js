@@ -1,8 +1,9 @@
 window.addEventListener("load", () => {
-  todos = JSON.parse(localStorage.getItem("todos")) || [];
+  let todos = JSON.parse(localStorage.getItem("todos")) || [];
   const nameInput = document.querySelector("#name");
   const newTodoForm = document.querySelector("#new-todo-form");
   const submitTodoButton = document.querySelector("#submitTodo");
+  const logoutButton = document.createElement("button"); // create logout button
 
   const username = localStorage.getItem("username") || "";
 
@@ -33,12 +34,23 @@ window.addEventListener("load", () => {
   });
 
   submitTodoButton.addEventListener("click", (e) => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
     if (!isLoggedIn || isLoggedIn === "false") {
       e.preventDefault();
       window.location.href = "login.html";
+    } else {
+      // Submit the form
+      newTodoForm.submit();
     }
   });
+
+  logoutButton.innerText = "Logout"; // set the text of logout button
+  logoutButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    sessionStorage.setItem("isLoggedIn", "false");
+    window.location.href = "login.html";
+  });
+  document.querySelector("#header").appendChild(logoutButton); // append the logout button to the header
 
   DisplayTodos();
 });
@@ -46,6 +58,8 @@ window.addEventListener("load", () => {
 function DisplayTodos() {
   const todoList = document.querySelector("#todo-list");
   todoList.innerHTML = "";
+
+  let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
   todos.forEach((todo) => {
     const todoItem = document.createElement("div");
@@ -102,7 +116,6 @@ function DisplayTodos() {
 
       DisplayTodos();
     });
-
     edit.addEventListener("click", (e) => {
       const input = content.querySelector("input");
       input.removeAttribute("readonly");
@@ -116,9 +129,15 @@ function DisplayTodos() {
     });
 
     deleteButton.addEventListener("click", (e) => {
-      todos = todos.filter((t) => t != todo);
-      localStorage.setItem("todos", JSON.stringify(todos));
-      DisplayTodos();
+      const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+      if (!isLoggedIn || isLoggedIn === "false") {
+        e.preventDefault();
+        window.location.href = "login.html";
+      } else {
+        todos = todos.filter((t) => t != todo);
+        localStorage.setItem("todos", JSON.stringify(todos));
+        DisplayTodos();
+      }
     });
   });
 }
