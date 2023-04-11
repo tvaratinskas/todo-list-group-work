@@ -16,6 +16,19 @@
     <link rel="stylesheet" href="main.css" />
   </head>
 
+  <header id="header">
+    <!-- <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="burger"><a href="#">☰</a></li>
+      </ul>
+    </nav> -->
+  </header>
+
+
   <body>
     <div class="video-background">
       <video autoplay muted loop id="Video">
@@ -53,6 +66,21 @@
               id="content"
             />
 
+
+          <input type="submit" value="Add todo" id="submitTodo" />
+        </form>
+      </section>
+      <!-- End of New Todo -->
+
+      <!-- Todo List -->
+      <section class="todo-list">
+        <h3 id="todo-title">TODO LIST</h3>
+        <div class="list" id="todo-list"></div>
+      </section>
+      <!-- End of Todo List -->
+    </main>
+    <!-- End of App Wrapper -->
+
             <h4>Pick a day</h4>
             <div class="options">
               <label>
@@ -81,11 +109,16 @@
           </form>
         </section>
 
+
         <section class="todo-list">
           <div class="list" id="todo-list"></div>
         </section>
       </main>
     </div>
     <script src="main.js"></script>
+
+    <script src="login.js"></script>
+    <!-- End of JS Import -->
+
   </body>
 </html>

@@ -1,49 +1,44 @@
 const loginForm = document.getElementById("login-form");
 
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-  console.log("Sending login request...");
+    console.log("Sending login request...");
 
-  fetch("https://testapi.io/api/tomas1089/resource/todoLogin", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ login: username, password: password }),
-  })
-    .then((response) => {
-      console.log("Received login response:", response);
-
-      if (response.ok) {
-        // Check if login and password are valid
-        return fetch("https://testapi.io/api/tomas1089/resource/todoLogin", {
+    try {
+      const response = await fetch(
+        "https://testapi.io/api/tomas1089/resource/login",
+        {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ login: username, password: password }),
-        });
-      } else {
-        // Login failed
-        throw new Error("Login failed");
-      }
-    })
-    .then((response) => {
-      console.log("Received check login response:", response);
+        }
+      );
+
+      console.log("Received login response:", response);
 
       if (response.ok) {
         alert("Login successful");
-        window.location.replace("index.html");
+
+        // Store login credentials in session storage
+        sessionStorage.setItem("isLoggedIn", true);
+        sessionStorage.setItem("username", username);
+        sessionStorage.setItem("password", password);
+
+        // Redirect to index.html
+        window.location.href = "index.html";
       } else {
-        alert("Login failed");
+        throw new Error("Login failed");
       }
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error(error);
       alert("An error occurred while trying to login");
-    });
-});
+    }
+  });
+}

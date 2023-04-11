@@ -1,7 +1,9 @@
 window.addEventListener("load", () => {
-  todos = JSON.parse(localStorage.getItem("todos")) || [];
+  let todos = JSON.parse(localStorage.getItem("todos")) || [];
   const nameInput = document.querySelector("#name");
   const newTodoForm = document.querySelector("#new-todo-form");
+  const submitTodoButton = document.querySelector("#submitTodo");
+  const logoutButton = document.createElement("button"); // create logout button
 
   const username = localStorage.getItem("username") || "";
 
@@ -31,12 +33,34 @@ window.addEventListener("load", () => {
     DisplayTodos();
   });
 
+  submitTodoButton.addEventListener("click", (e) => {
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    if (!isLoggedIn || isLoggedIn === "false") {
+      e.preventDefault();
+      window.location.href = "login.html";
+    } else {
+      // Submit the form
+      newTodoForm.submit();
+    }
+  });
+
+  logoutButton.innerText = "Logout"; // set the text of logout button
+  logoutButton.style.color = "pink";
+  logoutButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    sessionStorage.setItem("isLoggedIn", "false");
+    window.location.href = "login.html";
+  });
+  document.querySelector("#header").appendChild(logoutButton); // append the logout button to the header
+
   DisplayTodos();
 });
 
 function DisplayTodos() {
   const todoList = document.querySelector("#todo-list");
   todoList.innerHTML = "";
+
+  let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
   todos.forEach((todo) => {
     const todoItem = document.createElement("div");
@@ -97,7 +121,6 @@ function DisplayTodos() {
       DisplayTodos();
     });
 
-    //....................
     todoItem.id = "favoriteOff";
 
     let favoritesBtn = document.getElementById("favoritesBtn");
@@ -134,7 +157,8 @@ function DisplayTodos() {
         (favoriteOff) => (favoriteOff.style.display = "flex")
       );
     });
-    //....................
+  
+
 
     edit.addEventListener("click", (e) => {
       const input = content.querySelector("input");
@@ -149,9 +173,15 @@ function DisplayTodos() {
     });
 
     deleteButton.addEventListener("click", (e) => {
-      todos = todos.filter((t) => t != todo);
-      localStorage.setItem("todos", JSON.stringify(todos));
-      DisplayTodos();
+      const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+      if (!isLoggedIn || isLoggedIn === "false") {
+        e.preventDefault();
+        window.location.href = "login.html";
+      } else {
+        todos = todos.filter((t) => t != todo);
+        localStorage.setItem("todos", JSON.stringify(todos));
+        DisplayTodos();
+      }
     });
   });
 }
