@@ -4,19 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
-    <!-- CSS Import -->
-    <link rel="stylesheet" href="main.css" />
-    <!-- End of CSS Import -->
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Todo</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-    <!-- End of Fonts -->
+
+    <link rel="stylesheet" href="main.css" />
   </head>
+
   <header id="header">
     <!-- <nav>
       <ul>
@@ -29,52 +28,44 @@
     </nav> -->
   </header>
 
+
   <body>
-    <!-- App Wrapper -->
-    <main class="app">
-      <!-- Greeting -->
-      <section class="greeting">
-        <h2 class="title">
-          What's up, <input type="text" id="name" placeholder="Name here" />
-        </h2>
-      </section>
-      <!-- End of Greeting -->
+    <div class="video-background">
+      <video autoplay muted loop id="Video">
+        <source src="background-movie.mp4" type="video/mp4" />
+      </video>
+      <video autoplay muted loop id="Video-2">
+        <source src="walking-video.mp4" type="video/mp4" />
+      </video>
+      <video autoplay muted loop id="Video-3">
+        <source src="riedlente.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="all">
+      <main class="app">
+        <section class="greeting">
+          <h2 class="title">
+            Hello, <input type="text" id="name" placeholder="Name here" />
+          </h2>
+        </section>
+        <div class="todo-listBtns">
+          <button id="todoListBtn" class="todo-listBtn btn-todoList">
+            List
+          </button>
+          <button id="favoritesBtn" class="favoritesBtn btn-todoList">
+            Favorites
+          </button>
+        </div>
+        <section class="create-todo">
+          <h3 class="plans">Plans for a week:</h3>
+          <form id="new-todo-form">
+            <input
+              type="text"
+              placeholder="e.g. Gym?"
+              name="content"
+              id="content"
+            />
 
-      <!-- New Todo -->
-      <section class="create-todo">
-        <h3>CREATE A TODO</h3>
-        <form id="new-todo-form">
-          <h4>What's on your todo?</h4>
-          <input
-            type="text"
-            placeholder="e.g. Get some milk"
-            name="content"
-            id="content"
-          />
-
-          <h4>Pick a category</h4>
-          <div class="options">
-            <label>
-              <input
-                type="radio"
-                name="category"
-                id="category1"
-                value="business"
-              />
-              <span class="bubble business"></span>
-              <div>Business</div>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="category"
-                id="category2"
-                value="personal"
-              />
-              <span class="bubble personal"></span>
-              <div>Personal</div>
-            </label>
-          </div>
 
           <input type="submit" value="Add todo" id="submitTodo" />
         </form>
@@ -90,9 +81,44 @@
     </main>
     <!-- End of App Wrapper -->
 
-    <!-- JS Import -->
+            <h4>Pick a day</h4>
+            <div class="options">
+              <label>
+                <input
+                  type="radio"
+                  name="category"
+                  id="category1"
+                  value="Weekend"
+                />
+                <span class="bubble weekday"></span>
+                <p class="weekday">weekDay</p>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="category"
+                  id="category2"
+                  value="weekend"
+                />
+                <span class="bubble weekend"></span>
+                <p class="weekEnd">weekEnd</p>
+              </label>
+            </div>
+
+            <input type="submit" value="Add" />
+          </form>
+        </section>
+
+
+        <section class="todo-list">
+          <div class="list" id="todo-list"></div>
+        </section>
+      </main>
+    </div>
     <script src="main.js"></script>
+
     <script src="login.js"></script>
     <!-- End of JS Import -->
+
   </body>
 </html>
